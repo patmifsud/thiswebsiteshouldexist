@@ -1,18 +1,34 @@
+
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <el-container>
+        <span>TWSE</span>
+        <el-divider direction="vertical"></el-divider>
+    </el-container>      
+    <el-divider></el-divider>
+
+    <el-row>
+      <h1>This website should exist</h1> 
+      <p>a dumb GPT-3 demo</p>
+    </el-row>
+
+    <siteForm />
+
+
   </div>
 </template>
 
+
+
+
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import siteForm from '../components/siteForm.vue'
 
 export default {
-  name: 'Home',
+  name: "Home",
+  
   components: {
-    HelloWorld
+    siteForm
   }
-}
+};
 </script>
