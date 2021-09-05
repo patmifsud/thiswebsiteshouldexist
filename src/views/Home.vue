@@ -4,7 +4,8 @@
     <el-container>
         <span>TWSE</span>
         <el-divider direction="vertical"></el-divider>
-    </el-container>      
+    </el-container>
+
     <el-divider></el-divider>
 
     <el-row>
@@ -13,7 +14,6 @@
     </el-row>
 
     <siteForm />
-
 
   </div>
 </template>

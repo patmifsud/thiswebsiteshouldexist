@@ -2,7 +2,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 
 const firebaseApp = firebase.initializeApp({
-   apiKey: "AIzaSyDhvtm_zhrLRRrTFOP8qm952VMGCKMfU0U",
+   apiKey: "AIzaSyDH3AFJvLZDKXXeaH0U8XOpBiOEeCEwnwo",
    authDomain: "thiswebsiteshouldexist.firebaseapp.com",
    projectId: "thiswebsiteshouldexist",
    storageBucket: "thiswebsiteshouldexist.appspot.com",
@@ -11,8 +11,6 @@ const firebaseApp = firebase.initializeApp({
    measurementId: "G-MR9Z7YXV58"
 })
 
-
 const db = firebaseApp.firestore();
 
-
-export {db, firebase};
+export {db};
