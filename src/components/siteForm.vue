@@ -76,8 +76,8 @@ export default {
     return {
       formState: "ready", //ready, loading, success
       formData: {
-        siteAdjective: "Neutral",
-        siteType: "Website",
+        siteAdjective: "informative",
+        siteType: "website",
         siteTopic: "",
         seedFont: `seedFont${Math.floor(Math.random() * 6)}`,
         seedLayout: `seedLayout${Math.floor(Math.random() * 6)}`,
