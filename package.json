@@ -11,6 +11,7 @@
     "core-js": "^3.6.5",
     "element-ui": "^2.15.6",
     "firebase": "^9.0.1",
+    "slugify": "^1.6.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuefire": "^2.2.5"

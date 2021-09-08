@@ -1,102 +1,140 @@
 <template>
-  <el-container :class="formState">
-    <el-form  :inline="true" :model="formData">
+  <div>
+    <div v-if="limiterData.tokens > 1">
+      <el-row>
+        <token-status :tokens="limiterData.tokens" />
+      </el-row>
 
-      <el-form-item label="Create a ">
-        <el-select v-model="formData.siteAdjective">
-          <el-option label="Neutral" value="Neutral"></el-option>
-        </el-select>
+      <el-container :class="formState">
+        <el-form :inline="true" :model="formData">
+          <el-form-item label="Create a ">
+            <el-select v-model="formData.siteAdjective">
+              <el-option label="Neutral" value="Neutral"></el-option>
+            </el-select>
 
-        <el-select v-model="formData.siteType">
-          <el-option label="Website" value="Website"></el-option>
-        </el-select>
-      </el-form-item>
+            <el-select v-model="formData.siteType">
+              <el-option label="Website" value="Website"></el-option>
+            </el-select>
+          </el-form-item>
 
-      <el-form-item label="about">
-        <el-input
-          v-model="formData.siteTopic"
-          :placeholder="formData.placeholder"
-          :rules="{ required: true, message: 'Enter an idea for your website' }">
-         </el-input>
-      </el-form-item>
+          <el-form-item label="about">
+            <el-input
+              v-model="formData.siteTopic"
+              :placeholder="formData.placeholder"
+              :rules="{
+                required: true,
+                message: 'Enter an idea for your website',
+              }"
+            >
+            </el-input>
+          </el-form-item>
 
-      <el-form-item>
-        <el-button type="primary" @click="handleSubmit">Create it</el-button>
-      </el-form-item>
-
-    </el-form>
-
-  </el-container>
+          <el-form-item>
+            <el-button type="primary" @click="handleSubmit"
+              >Create it</el-button
+            >
+          </el-form-item>
+        </el-form>
+      </el-container>
+    </div>
+    <div v-else-if="limiterData.tokens < 1">
+      <no-tokens-msg />
+    </div>
+    <div v-else>
+      <el-button :loading="true" round>Loading</el-button>
+    </div>
+  </div>
 </template>
 
-
 <script>
-   import { db } from '../firebase'
+import { db } from "../firebase";
+import tokenStatus from './home/tokenStatus.vue'
+import noTokensMsg from './home/noTokensMsg.vue';
+var slugify = require('slugify')
 
-   const placeholders = [
-      "eg. Cigarettes for dogs",
-      "eg. Proof that toenails are highly nutritious",
-      "eg. Buy used toothbrushes",
-      "eg. Learn to program in latin",
-   ];
 
-   const dbSitePath = 'sites/ww1'
-   // const dbServicePath = 'service'
+const placeholders = [
+  "eg. Cigarettes for dogs",
+  "eg. Proof that toenails are highly nutritious",
+  "eg. Buy used toothbrushes",
+  "eg. Learn to program in latin",
+];
 
-   export default{
-      data() {
-         return {
-            formState: 'ready', //ready, loading, success
-            formData: {
-               siteAdjective: "Neutral",
-               siteType: "Website",
-               siteTopic: "",
-            },
-            firebaseData: null,
-            placeholder:
-               placeholders[Math.floor(Math.random() * placeholders.length)],
-         };
+// const dbServicePath = 'service'
+
+export default {
+  data() {
+    return {
+      formState: "ready", //ready, loading, success
+      formData: {
+        siteAdjective: "Neutral",
+        siteType: "Website",
+        siteTopic: "",
+        seedFont: `seedFont${Math.floor(Math.random() * 6)}`,
+        seedLayout: `seedLayout${Math.floor(Math.random() * 6)}`,
+        seedColor: `seedColor${Math.floor(Math.random() * 6)}`,
+        seedMisc:`seedMisc${Math.floor(Math.random() * 6)}`,
+        url: '',
+        loadingGpt: true,
       },
-      firestore(){
-         return{firebaseData: db.doc(dbSitePath),};
-      },
+      limiterData: 'loading',
+      placeholder:
+        placeholders[Math.floor(Math.random() * placeholders.length)],
+    };
+  },
+  firestore() {
+    return { limiterData: db.collection("backend").doc("limiter") };
+  },
+  methods: {
+    async checkIfSiteExists(sitePath) {
+      console.log("Checking if this site exists");
+      const doc = await db.doc(sitePath).get();
 
-      methods: {
+      if (doc.exists) {
+        return true;
+      } else {
+        console.log("site doesn't already exist");
+        return false;
+      }
+    },
 
-         async checkIfSiteExists(sitePath) {
-            console.log("Checking if this site exists");
-            const doc = await db.doc(sitePath).get();
-               
-            if (doc.exists) { return true
-            } else { console.log("site doesn't already exist"); return false }
-            
-         },
+    async handleSubmit() {
+      const siteUrl = slugify(
+        this.formData.siteTopic, 
+        {lower: true, strict: true}
+      );
+      this.formData.url = siteUrl;
+      const sitePath = `sites/${siteUrl}`;
+      this.formState = "loading";
 
-         async handleSubmit() {
-               const sitePath = `sites/${this.formData.siteTopic}`
-               this.formState = 'loading'
+      try {
+        // TODO check credit amount, if too low throw error
+        if (await this.checkIfSiteExists(sitePath)) {
+          throw "This site already exists";
+        } else {
+          console.log(`Creating a new site: ${siteUrl}`);
 
-            try {
-               // TODO check credit amount, if too low throw error
-               if (await this.checkIfSiteExists(sitePath)){
-                  throw 'This site already exists';
-               } 
-
-               console.log("Creating a new site...")
-
-               db.doc(sitePath).set(this.formData).then(() => {
-                  console.log('success');
-                  this.state = 'success';
-
-                  // navigate to building page
-               });
-
-            } catch (error){
-               this.errorMessage = JSON.stringify(error)
-               this.state = 'ready';
-               console.error(JSON.stringify(error));
-            }
-         },
-   },
-}
+          db.doc(sitePath)
+            .set(this.formData)
+            .then(() => {
+              console.log("success");
+              this.state = "success";
+              window.location.href = `site/${siteUrl}`;
+            });
+        }
+      } catch (error) {
+        this.errorMessage = JSON.stringify(error);
+        this.state = "ready";
+        console.error(JSON.stringify(error));
+      }
+    },
+  },
+  components: {
+    noTokensMsg,
+    tokenStatus
+  },
+  props: {
+   tokens: String
+  }
+};
 </script>

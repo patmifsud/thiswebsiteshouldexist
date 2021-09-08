@@ -11,6 +11,9 @@ const firebaseApp = firebase.initializeApp({
    measurementId: "G-MR9Z7YXV58"
 })
 
+// firebase emulators:start
+// http://localhost:5000
+
 const db = firebaseApp.firestore();
 
 export {db};
