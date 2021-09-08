@@ -9,11 +9,20 @@
         <el-form :inline="true" :model="formData">
           <el-form-item label="Create a ">
             <el-select v-model="formData.siteAdjective">
-              <el-option label="Neutral" value="Neutral"></el-option>
+              <el-option label="informative" value="informative"></el-option>
+              <el-option label="sales" value="sales"></el-option>
+              <el-option label="serious" value="serious"></el-option>
+              <el-option label="angry" value="angry"></el-option>
+              <el-option label="sarcastic" value="sarcastic"></el-option>
+              <el-option label="sensual" value="sensual"></el-option>
+              <el-option label="insane" value="insane"></el-option>
             </el-select>
 
             <el-select v-model="formData.siteType">
-              <el-option label="Website" value="Website"></el-option>
+              <el-option label="website" value="website"></el-option>
+              <el-option label="blog" value="blog"></el-option>
+              <el-option label="sales page" value="sales-page"></el-option>
+
             </el-select>
           </el-form-item>
 
