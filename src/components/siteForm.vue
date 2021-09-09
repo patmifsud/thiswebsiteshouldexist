@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-if="limiterData.tokens > 1">
+  <div class="inner">
+    <div v-if="limiterData.tokens > 0">
       <el-row>
         <token-status :tokens="limiterData.tokens" />
       </el-row>
@@ -10,12 +10,16 @@
           <el-form-item label="Create a ">
             <el-select v-model="formData.siteAdjective">
               <el-option label="informative" value="informative"></el-option>
-              <el-option label="sales" value="sales"></el-option>
-              <el-option label="serious" value="serious"></el-option>
               <el-option label="angry" value="angry"></el-option>
+              <el-option label="serious" value="serious"></el-option>
               <el-option label="sarcastic" value="sarcastic"></el-option>
               <el-option label="sensual" value="sensual"></el-option>
-              <el-option label="insane" value="insane"></el-option>
+              <el-option label="malicious" value="very malicious"></el-option>
+              <el-option label="humorous" value="humorous"></el-option>
+              <el-option label="controversial" value="very controversial"></el-option>
+              <el-option label="annoyingly cutesy" value="annoyingly cutesy"></el-option>
+              <el-option label="anxious" value="very anxious"></el-option>
+              <el-option label="latin" value="latin"></el-option>
             </el-select>
 
             <el-select v-model="formData.siteType">
@@ -83,8 +87,14 @@ export default {
         seedLayout: `seedLayout${Math.floor(Math.random() * 6)}`,
         seedColor: `seedColor${Math.floor(Math.random() * 6)}`,
         seedMisc:`seedMisc${Math.floor(Math.random() * 6)}`,
-        url: '',
+        gptTagline: ' ',
+        gptIntro: ' ',
+        gptMain: ' ',
+        gptCta:  ' ',
+        gptQuote: ' ',
+        url: ' ',
         loadingGpt: true,
+        images: [],
       },
       limiterData: 'loading',
       placeholder:
@@ -128,7 +138,7 @@ export default {
             .then(() => {
               console.log("success");
               this.state = "success";
-              window.location.href = `site/${siteUrl}`;
+              this.$router.push( `site/${siteUrl}`)
             });
         }
       } catch (error) {

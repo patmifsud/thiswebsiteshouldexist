@@ -1,0 +1,100 @@
+*{box-sizing:border-box; margin:0; padding:0; border:0; outline:0; font-size:14px; vertical-align:baseline; background:transparent;}
+div, input, nav, mesh {display: block; }
+body, html, #app{ min-height: 100vh; height:100%; background: var(--clrBg); }
+
+
+/* all themes */
+:root {
+   /* root size */
+
+   /* spacers */
+   --sp0:0.5rem;
+   --sp1:0.8rem;
+   --sp2:1.5rem;
+   --sp3:2rem;
+   --sp4:2.5rem;
+   --sp5:3.0rem;
+   --sp6:3.5rem;
+   --sp7:5.5rem;
+   --sp8:7.0rem;
+   --sp9:9.0rem;
+   --sp10:12.0rem;
+
+   /* font size */
+   --txtSize1: 3rem;
+   --txtSize2: 1.5rem;
+   --txtSize3: 1rem;
+
+   /* 🎨 */
+   --clr1: #2a2a2c;   /* Headings  */
+   --clr1l: #38383adf;  /* Body text, most things */
+   --clr1ll: #82828a9b;   /* De-empth  */
+
+   --clr2: #3172ff;   /* Key */
+   --clr3: #eeeeee;   /* Background darker  */
+
+   --clr4: #ffffff;   /* Background of other things  */
+
+   --clrBg: #ffffff;    /* Background of page  */
+
+   /* Font */
+    --fontHeading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
+    --fontBody: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
+    --textTransform: none;
+    --headingWeight: 700;
+
+    /* Borders */
+    --borderRadius: 2px;
+    --border: 1px solid #eeeeee;
+
+    /* Shadow */
+    --shadow: none;
+
+    /* Image Filter */
+    --filter: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.blog .inner{
+   flex-direction: column;
+}
+
+
+/* ADJECTIVE OVERRIDES */
+.angry{
+   --filter: grayscale(80%);
+   --clr2: #f35e4a;   /* Key */
+   --textTransform: uppercase;
+}
+
+.sensual{
+   --filter: blur(1px) sepia(30%);
+   --clr2: #d17d72;   /* Key */
+}
+
+.serious{
+   --filter: grayscale(100%);
+   --clr1: #19191B;   /* Headings  */
+   --clr1l: #19191bdf;  /* Body text, most things */
+   --clr1ll: #19191b9b;
+   --clr2: #515e7a;   /* Key */
+   --clr3: #f0f0f0;   /* Background of other things  */
+   --clrBg: #ffffff;    /* Background of page  */
+}

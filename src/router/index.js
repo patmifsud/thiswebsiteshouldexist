@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Site from '../views/Site.vue'
 
 
+
+
 Vue.use(VueRouter)
 
 const routes = [

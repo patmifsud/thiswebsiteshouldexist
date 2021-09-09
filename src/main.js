@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import '@/assets/variables.css'
+import '@/assets/style.css'
+
 import {firestorePlugin} from 'vuefire'
 
 import router from './router'
