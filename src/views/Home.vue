@@ -18,6 +18,11 @@
 div {
   margin-bottom: var(--sp5);
 }
+
+.container.home{
+      padding: var(--sp6) var(--sp5) 0 var(--sp5);
+
+}
 .inner.flexcol {
   flex-direction: column;
 }
@@ -30,12 +35,12 @@ margin-right:var(--sp1);
 
 .home .rhs{
 justify-content: top;
-padding-top:var(--sp3);
+padding-top:var(--sp6);
 }
 
 .home h1{
   font-size:4.5rem;
-  margin-bottom:1.3rem;
+  margin-bottom:2.4rem;
 }
 svg{
   width: 184px;

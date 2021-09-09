@@ -105,6 +105,51 @@ div.image{
   margin-right:var(--sp4);
 }
 
+
+
+ 
+ #app button.novelty{
+   background-color: #4e3aaa;
+   border: none;
+   font-size: 1.4em;
+   border-bottom: solid 3px #200d72;
+   color: #ffffff;
+   padding: 0.6em 2.4em;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: all 0.15s ease-out;
+ }
+
+ #app button.novelty.disabled{
+   pointer-events: none;
+   background-color: #9c9c9c;
+   border-bottom: solid 3px #c4c4c4;
+
+   border-bottom-width:2px;
+   margin-top:1px;
+   cursor:not-allowed;
+ }
+
+
+ #app button.novelty span{   color: #ffffff;
+ }
+ 
+ #app button.novelty:hover{
+   filter:brightness(0.95) saturate(1.5);
+   border-bottom-width:2px;
+   margin-top:1px;
+   cursor: pointer;
+ }
+ 
+ #app button.novelty:active{
+   filter: brightness(0.8) saturate(2);
+   border-bottom-width:1px;
+   margin-top: 2px;
+   border-radius: 4px 4px 5px 5px;
+   cursor: pointer;
+ }
+
+
 @media only screen and (max-width: 640px) {
    .container {
       padding:var(--sp2) var(--sp2);
