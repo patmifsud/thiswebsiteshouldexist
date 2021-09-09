@@ -1,25 +1,24 @@
 <template>
   <div class="inner">
     <div v-if="limiterData.tokens > 0">
-      <el-row>
+      <div class="elementRow">
         <token-status :tokens="limiterData.tokens" />
-      </el-row>
+      </div>
 
       <el-container :class="formState">
         <el-form :inline="true" :model="formData">
           <el-form-item label="Create a ">
             <el-select v-model="formData.siteAdjective">
-              <el-option label="informative" value="informative"></el-option>
-              <el-option label="angry" value="angry"></el-option>
-              <el-option label="serious" value="serious"></el-option>
-              <el-option label="sarcastic" value="sarcastic"></el-option>
-              <el-option label="sensual" value="sensual"></el-option>
-              <el-option label="malicious" value="very malicious"></el-option>
-              <el-option label="humorous" value="humorous"></el-option>
-              <el-option label="controversial" value="very controversial"></el-option>
-              <el-option label="annoyingly cutesy" value="annoyingly cutesy"></el-option>
-              <el-option label="anxious" value="very anxious"></el-option>
-              <el-option label="latin" value="latin"></el-option>
+              <el-option label="🤔   informative" value="informative"></el-option>
+              <el-option label="😡  angry" value="angry"></el-option>
+              <el-option label="🧐  serious" value="serious"></el-option>
+              <el-option label="😉  sarcastic" value="sarcastic"></el-option>
+              <el-option label="😙   sensual" value="sensual"></el-option>
+              <el-option label="😠   malicious" value="very malicious"></el-option>
+              <el-option label="😜   humorous" value="humorous"></el-option>
+              <el-option label="🥺   annoyingly cutesy" value="annoyingly cutesy"></el-option>
+              <el-option label="🤬   controversial" value="very controversial"></el-option>
+
             </el-select>
 
             <el-select v-model="formData.siteType">
@@ -33,7 +32,7 @@
           <el-form-item label="about">
             <el-input
               v-model="formData.siteTopic"
-              :placeholder="formData.placeholder"
+              :placeholder="placeholder"
               :rules="{
                 required: true,
                 message: 'Enter an idea for your website',
@@ -41,7 +40,7 @@
             >
             </el-input>
           </el-form-item>
-
+          <br />
           <el-form-item>
             <el-button type="primary" @click="handleSubmit"
               >Create it</el-button
