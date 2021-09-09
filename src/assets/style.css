@@ -13,6 +13,7 @@
 h1{
    font-family: var(--fontHeading);
    color: var(--clr1);
+   line-height: 1;
    font-size: var(--txtSize1);
    font-weight:var(--headingWeight);
    margin-right: var(--sp2);
@@ -106,7 +107,7 @@ div.image{
 
 @media only screen and (max-width: 640px) {
    .container {
-      padding:var(--sp2) var(--sp3);
+      padding:var(--sp2) var(--sp2);
    }
    .inner {
       flex-wrap: wrap;
@@ -115,5 +116,13 @@ div.image{
     .lhs, .rhs {
       margin: var(--sp1) var(--sp2) var(--sp3) 0;
 
+    }
+    #app p{
+       margin-right:0;
+       max-width:100%;
+    }
+
+    #app .home h1{
+      font-size: 3.5rem;
     }
  }
