@@ -1,9 +1,9 @@
 <template>
   <div>
-    <el-skeleton v-if="this.image.length < 2" animated>
+    <el-skeleton v-if="this.image && this.image.length < 2" animated>
       <template slot="template">
         <el-skeleton-item
-          style=" width:100%; "
+          style=" width:100%;  height: 300px; "
           variant="image"
         />
       </template>

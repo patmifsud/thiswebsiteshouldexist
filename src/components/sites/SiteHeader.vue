@@ -10,7 +10,11 @@
 
         <el-skeleton :loading="gptLoading" animated>
           <template slot="template">
-            <el-skeleton-item />
+            <el-skeleton-item style=" margin-bottom: var(--sp4);" />
+
+            <el-skeleton-item style="margin-bottom:10px;"/>
+            <el-skeleton-item style="margin-bottom:10px; width:90%;"/>
+            <el-skeleton-item style="margin-bottom:10px; width:40%;"/>
           </template>
 
           <template>

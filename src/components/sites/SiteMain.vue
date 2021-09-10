@@ -4,12 +4,18 @@
       <div class="lhs">
         <el-skeleton :loading="gptLoading" animated>
           <template slot="template">
-            <el-skeleton-item />
+            <el-skeleton-item style=" margin-bottom:10px;" />
+            <el-skeleton-item style=" margin-bottom:10px;"/>
+            <el-skeleton-item style=" width:80%; margin-bottom:30px;"/>
+            <el-skeleton-item style="margin-bottom:10px;"/>
+            <el-skeleton-item style="margin-bottom:10px; width:90%;"/>
+            <el-skeleton-item style="margin-bottom:10px; width:40%;"/>
+
           </template>
 
           <template>
             <p class="uppercase">Why {{
-               (this.heading.length > 15) ? `was this started?` : `${this.heading}?` }}</p>
+               (this.heading && this.heading.length > 15) ? `was this started?` : `${this.heading}?` }}</p>
             <p class="empth">{{ this.paragraph1 }}</p>
             <p>{{ this.paragraph2 }}</p>
           </template>
@@ -17,7 +23,7 @@
       </div>
 
       <div class="rhs">
-        <PageImage :imageLoaded="this.image.length < 2" :image="image" />
+        <PageImage :imageLoaded="this.image" :image="image" />
       </div>
     </div>
   </div>
