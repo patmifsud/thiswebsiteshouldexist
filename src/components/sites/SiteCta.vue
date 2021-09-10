@@ -67,6 +67,10 @@ margin-bottom:10px;
 display: block;
 padding: 5px 0;
 border-bottom: 1px solid rgb(203, 203, 255);
+  -webkit-user-select: all;  /* Chrome 49+ */
+  -moz-user-select: all;     /* Firefox 43+ */
+  -ms-user-select: all;      /* No support yet */
+  user-select: all; 
 }
 
 .el-button--small{
