@@ -151,8 +151,8 @@ div.image{
 
 
 @media only screen and (max-width: 640px) {
-   .container {
-      padding:var(--sp2) var(--sp2);
+   #app .container {
+      padding:var(--sp2) 7vw;
    }
    .inner {
       flex-wrap: wrap;
@@ -167,7 +167,4 @@ div.image{
        max-width:100%;
     }
 
-    #app .home h1{
-      font-size: 3.5rem;
-    }
  }

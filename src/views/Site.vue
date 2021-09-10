@@ -55,6 +55,8 @@
       :gptLoading="pageData.loadingGpt"
       :layout="pageData.seedLayout"
       :ctaButtonSeed="pageData.siteAdjective"
+      :url="pageData.url"
+
     />
 
 

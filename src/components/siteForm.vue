@@ -130,6 +130,17 @@ input {
   padding: 1.5em 2em;
 }
 
+@media only screen and (max-width: 640px) {
+  .formBox .top {
+  padding: 0.8em 1em 0.8em  1em;
+}
+
+.formBox .bottom {
+    padding: 1.8em 2em 0.8em  2em;
+
+}
+}
+
 </style>
 <script>
 import { db } from "../firebase";
